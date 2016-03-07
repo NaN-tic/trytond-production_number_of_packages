@@ -1,0 +1,66 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:production.bom.output:"
+msgid "Number of packages required for BOM output \"%s\"."
+msgstr "Número de embalajes obligatorios en la salida de LdM \"%s\"."
+
+msgctxt "error:production.bom.output:"
+msgid "Package required for BOM output \"%s\"."
+msgstr "Embalaje obligatorio para la salida de la LdM \"%s\"."
+
+msgctxt "error:production.bom.output:"
+msgid ""
+"Quantity by Package is required for package \"%(package)s\" of BOM output "
+"\"%(record)s\"."
+msgstr ""
+"Candidad por embalaje obligatoria en el embalaje \"%(package)s\" de la "
+"salida de la LdM \"%(record)s\"."
+
+msgctxt "error:production.bom.output:"
+msgid ""
+"The quantity of BOM output \"%s\" do not correspond to the number of "
+"packages."
+msgstr ""
+"La cantidad de la salida de la LdM \"%s\" no corresponde al número de "
+"embalajes."
+
+msgctxt "error:production:"
+msgid "Number of packages required for Production \"%s\"."
+msgstr "Número de embalajes obligatorio en la producción \"%s\"."
+
+msgctxt "error:production:"
+msgid "Package required for Production \"%s\"."
+msgstr "Embalaje obligatorio en la producción \"%s\"."
+
+msgctxt "error:production:"
+msgid ""
+"Quantity by Package is required for package \"%(package)s\" of Production "
+"\"%(record)s\"."
+msgstr ""
+"Candidad por embalaje obligatoria en el embalaje \"%(package)s\" de la "
+"producción \"%(record)s\"."
+
+msgctxt "error:production:"
+msgid ""
+"The quantity of Production \"%s\" do not correspond to the number of "
+"packages."
+msgstr ""
+"La cantidad de la producción \"%s\" no corresponde al número de embalajes."
+
+msgctxt "field:production,number_of_packages:"
+msgid "Number of packages"
+msgstr "Número de embalajes"
+
+msgctxt "field:production,package:"
+msgid "Packaging"
+msgstr "Embalaje por defecto"
+
+msgctxt "field:production.bom.output,number_of_packages:"
+msgid "Number of packages"
+msgstr "Número de embalajes"
+
+msgctxt "field:production.bom.output,package:"
+msgid "Packaging"
+msgstr "Embalaje por defecto"

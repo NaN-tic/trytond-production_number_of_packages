@@ -1,0 +1,65 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:production.bom.output:"
+msgid "Number of packages required for BOM output \"%s\"."
+msgstr "Número d'embalatge obligatori a la sortida de la LdM \"%s\"."
+
+msgctxt "error:production.bom.output:"
+msgid "Package required for BOM output \"%s\"."
+msgstr "Embalatge obligatori a la sortida de la LdM \"%s\"."
+
+msgctxt "error:production.bom.output:"
+msgid ""
+"Quantity by Package is required for package \"%(package)s\" of BOM output "
+"\"%(record)s\"."
+msgstr ""
+"La Quantitat per embalatge és obligatòria per l'embalatge \"%(package)s\" de"
+" la sortida de la LdM \"%(record)s\"."
+
+msgctxt "error:production.bom.output:"
+msgid ""
+"The quantity of BOM output \"%s\" do not correspond to the number of "
+"packages."
+msgstr ""
+"La quantitat de la sortida de la LdM \"%s\" no correspon al número "
+"d'embalatges."
+
+msgctxt "error:production:"
+msgid "Number of packages required for Production \"%s\"."
+msgstr "Número d'emabalatges obligatori a la producció \"%s\"."
+
+msgctxt "error:production:"
+msgid "Package required for Production \"%s\"."
+msgstr "Embalatge obligatori a la producció \"%s\"."
+
+msgctxt "error:production:"
+msgid ""
+"Quantity by Package is required for package \"%(package)s\" of Production "
+"\"%(record)s\"."
+msgstr ""
+"La quantitat per embalatge és obligatòria per l'embalatge \"%(package)s\" de"
+" la producció \"%(record)s\"."
+
+msgctxt "error:production:"
+msgid ""
+"The quantity of Production \"%s\" do not correspond to the number of "
+"packages."
+msgstr "La quantitat de la producció \"%s\" no correspon al número d'embalatges."
+
+msgctxt "field:production,number_of_packages:"
+msgid "Number of packages"
+msgstr "Embalatges"
+
+msgctxt "field:production,package:"
+msgid "Packaging"
+msgstr "Embalatge"
+
+msgctxt "field:production.bom.output,number_of_packages:"
+msgid "Number of packages"
+msgstr "Embalatges"
+
+msgctxt "field:production.bom.output,package:"
+msgid "Packaging"
+msgstr "Embalatge"
