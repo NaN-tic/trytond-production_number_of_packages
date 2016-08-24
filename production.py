@@ -66,10 +66,8 @@ class Production(PackagedMixin):
 
     @fields.depends(methods=['quantity'])
     def on_change_number_of_packages(self):
-        res = super(Production, self).on_change_number_of_packages()
-        self.quantity = res.get('quantity')
-        res.update(self.on_change_quantity())
-        return res
+        super(Production, self).on_change_number_of_packages()
+        self.on_change_quantity()
 
     @classmethod
     def validate(cls, productions):
@@ -79,13 +77,13 @@ class Production(PackagedMixin):
 
     def _explode_move_values(self, from_location, to_location, company,
             bom_io, quantity):
-        values = super(Production, self)._explode_move_values(
+        move = super(Production, self)._explode_move_values(
             from_location, to_location, company, bom_io, quantity)
         package_factor = quantity / bom_io.quantity
         try:
-            values['package'] = bom_io.package.id if bom_io.package else None
-            values['number_of_packages'] = int(bom_io.number_of_packages
+            move.package = bom_io.package.id if bom_io.package else None
+            move.number_of_packages = int(bom_io.number_of_packages
                 * package_factor) if bom_io.number_of_packages else None
         except AttributeError:
             pass  # production.bom.output doesn't have package fields
-        return values
+        return move
