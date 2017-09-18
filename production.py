@@ -2,6 +2,7 @@
 # copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import PoolMeta
+from trytond.pyson import Eval
 
 from trytond.modules.stock_number_of_packages.package import PackagedMixin
 
@@ -39,17 +40,23 @@ class Production(PackagedMixin):
     __name__ = 'production'
     __metaclass__ = PoolMeta
 
+    package_required = fields.Function(fields.Boolean('Package required'),
+        'on_change_with_package_required')
+
     @classmethod
     def __setup__(cls):
         super(Production, cls).__setup__()
+        package_required = Eval('package_required', False)
         if cls.quantity.states.get('required'):
-            cls.package.states['required'] = cls.quantity.states['required']
+            cls.package.states['required'] = (
+                cls.quantity.states['required'] | package_required)
+            cls.number_of_packages.states['required'] = (
+                cls.quantity.states['required'] | package_required)
+        else:
+            cls.package.states['required'] = package_required
+            cls.number_of_packages.states['required'] = package_required
         if cls.quantity.states.get('readonly'):
             cls.package.states['readonly'] = cls.quantity.states['readonly']
-        if cls.quantity.states.get('required'):
-            cls.number_of_packages.states['required'] = (
-                cls.quantity.states['required'])
-        if cls.quantity.states.get('readonly'):
             cls.number_of_packages.states['readonly'] = (
                 cls.quantity.states['readonly'])
 
@@ -63,6 +70,12 @@ class Production(PackagedMixin):
                     'The quantity of Production "%s" do not correspond to the '
                     'number of packages.')
                 })
+
+    @fields.depends('product', 'quantity')
+    def on_change_with_package_required(self, name=None):
+        if self.product and self.product.package_required:
+            return True
+        return False
 
     @fields.depends(methods=['quantity'])
     def on_change_number_of_packages(self):
