@@ -101,6 +101,19 @@ class Production(PackagedMixin):
             pass  # production.bom.output doesn't have package fields
         return move
 
+    def _move(self, from_location, to_location, company, product, uom,
+            quantity):
+        move = super(Production, self)._move(from_location, to_location,
+            company, product, uom, quantity)
+        if product == self.product:
+            move.package = self.package
+            move.number_of_packages = self.number_of_packages
+        elif product.package_required:
+            package = product.default_package
+            move.package = package
+            move.number_of_packages = package.qty * quantity if package else quantity
+        return move
+
     @classmethod
     def compute_request(cls, product, warehouse, quantity, date, company):
         production = super(Production, cls).compute_request(product,
