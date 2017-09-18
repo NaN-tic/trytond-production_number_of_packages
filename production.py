@@ -100,3 +100,13 @@ class Production(PackagedMixin):
         except AttributeError:
             pass  # production.bom.output doesn't have package fields
         return move
+
+    @classmethod
+    def compute_request(cls, product, warehouse, quantity, date, company):
+        production = super(Production, cls).compute_request(product,
+            warehouse, quantity, date, company)
+        package = product.default_package
+        number_packages = package.qty * quantity if package else quantity
+        production.package = package
+        production.number_of_packages = number_packages
+        return production
