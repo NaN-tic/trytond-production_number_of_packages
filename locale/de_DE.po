@@ -1,0 +1,66 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:production.bom.output:"
+msgid "Number of packages required for BOM output \"%s\"."
+msgstr "Paketanzahl ist für Stücklistenausgang \"%s\" erforderlich."
+
+msgctxt "error:production.bom.output:"
+msgid "Package required for BOM output \"%s\"."
+msgstr "Verpackung erforderlich für Stücklistenausgang \"%s\"."
+
+msgctxt "error:production.bom.output:"
+msgid ""
+"Quantity by Package is required for package \"%(package)s\" of BOM output "
+"\"%(record)s\"."
+msgstr ""
+"Anzahl pro Packstück ist erforderlich für Verpackung  \"%(package)s\" in "
+"Stücklistenausgang \"%(record)s\"."
+
+msgctxt "error:production.bom.output:"
+msgid ""
+"The quantity of BOM output \"%s\" do not correspond to the number of "
+"packages."
+msgstr ""
+"Die Anzahl von Stücklistenausgang \"%s\" entspricht nicht der Anzahl der "
+"Packstücke."
+
+msgctxt "error:production:"
+msgid "Number of packages required for Production \"%s\"."
+msgstr "Paketanzahl ist für Produktion \"%s\" erforderlich."
+
+msgctxt "error:production:"
+msgid "Package required for Production \"%s\"."
+msgstr "Verpackung erforderlich für Produktion \"%s\"."
+
+msgctxt "error:production:"
+msgid ""
+"Quantity by Package is required for package \"%(package)s\" of Production "
+"\"%(record)s\"."
+msgstr ""
+"Anzahl pro Packstück ist erforderlich für Verpackung  \"%(package)s\" in "
+"Produktion \"%(record)s\"."
+
+msgctxt "error:production:"
+msgid ""
+"The quantity of Production \"%s\" do not correspond to the number of "
+"packages."
+msgstr ""
+"Die Anzahl von Produktion \"%s\" entspricht nicht der Anzahl der Packstücke."
+
+msgctxt "field:production,number_of_packages:"
+msgid "Number of packages"
+msgstr "Paketanzahl"
+
+msgctxt "field:production,package:"
+msgid "Packaging"
+msgstr "Verpackung"
+
+msgctxt "field:production.bom.output,number_of_packages:"
+msgid "Number of packages"
+msgstr "Paketanzahl"
+
+msgctxt "field:production.bom.output,package:"
+msgid "Packaging"
+msgstr "Verpackung"
