@@ -105,13 +105,11 @@ class Production(PackagedMixin):
             quantity):
         move = super(Production, self)._move(from_location, to_location,
             company, product, uom, quantity)
-        if product == self.product:
-            move.package = self.package
-            move.number_of_packages = self.number_of_packages
-        elif product.package_required:
+        if product == self.product or product.package_required:
             package = product.default_package
             move.package = package
-            move.number_of_packages = package.qty * quantity if package else quantity
+            move.number_of_packages = (package.qty * quantity if package
+                else quantity)
         return move
 
     @classmethod
