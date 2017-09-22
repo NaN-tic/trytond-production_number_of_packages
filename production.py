@@ -47,11 +47,11 @@ class Production(PackagedMixin):
     def __setup__(cls):
         super(Production, cls).__setup__()
         package_required = Eval('package_required', False)
-        if cls.quantity.states.get('required'):
+        if cls.package.states.get('required'):
             cls.package.states['required'] = (
-                cls.quantity.states['required'] | package_required)
+                cls.package.states['required'] | package_required)
             cls.number_of_packages.states['required'] = (
-                cls.quantity.states['required'] | package_required)
+                cls.package.states['required'] | package_required)
         else:
             cls.package.states['required'] = package_required
             cls.number_of_packages.states['required'] = package_required
