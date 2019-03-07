@@ -108,7 +108,7 @@ class Production(PackagedMixin):
         if product == self.product or product.package_required:
             package = product.default_package
             move.package = package
-            move.number_of_packages = (package.qty * quantity if package
+            move.number_of_packages = int(package.qty * quantity if package
                 else quantity)
         return move
 
