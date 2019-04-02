@@ -9,9 +9,8 @@ from trytond.modules.stock_number_of_packages.package import PackagedMixin
 __all__ = ['BOMOutput', 'Production']
 
 
-class BOMOutput(PackagedMixin):
+class BOMOutput(PackagedMixin,metaclass=PoolMeta):
     __name__ = 'production.bom.output'
-    __metaclass__ = PoolMeta
 
     @classmethod
     def __setup__(cls):
@@ -36,9 +35,9 @@ class BOMOutput(PackagedMixin):
             bom.check_package(bom.quantity)
 
 
-class Production(PackagedMixin):
+class Production(PackagedMixin,metaclass=PoolMeta):
     __name__ = 'production'
-    __metaclass__ = PoolMeta
+
 
     package_required = fields.Function(fields.Boolean('Package required'),
         'on_change_with_package_required')
