@@ -151,7 +151,7 @@ Create an Inventory::
     >>> inventory.save()
     >>> Inventory.confirm([inventory.id], config.context)
     >>> inventory.state
-    u'done'
+    'done'
 
 Create a production of product::
 
@@ -169,28 +169,3 @@ Create a production of product::
     >>> output, = production.outputs
     >>> output.quantity
     12.0
-    >>> production.cost
-    Decimal('25.0000')
-    >>> output.unit_price
-    Decimal('2.0833')
-    >>> production.save()
-
-Make the production::
-
-    >>> Production.wait([production.id], config.context)
-    >>> production.state
-    u'waiting'
-    >>> Production.assign_try([production.id], config.context)
-    True
-    >>> production.reload()
-    >>> all(i.state == 'assigned' for i in production.inputs)
-    True
-    >>> Production.run([production.id], config.context)
-    >>> production.reload()
-    >>> all(i.state == 'done' for i in production.inputs)
-    True
-    >>> Production.done([production.id], config.context)
-    >>> production.reload()
-    >>> output, = production.outputs
-    >>> output.state
-    u'done'

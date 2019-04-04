@@ -12,19 +12,6 @@ __all__ = ['BOMOutput', 'Production']
 class BOMOutput(PackagedMixin,metaclass=PoolMeta):
     __name__ = 'production.bom.output'
 
-    @classmethod
-    def __setup__(cls):
-        super(BOMOutput, cls).__setup__()
-        cls._error_messages.update({
-                'package_required': 'Package required for BOM output "%s".',
-                'number_of_packages_required': (
-                    'Number of packages required for BOM output "%s".'),
-                'package_qty_required': ('Quantity by Package is required '
-                    'for package "%(package)s" of BOM output "%(record)s".'),
-                'invalid_quantity_number_of_packages': ('The quantity of BOM '
-                    'output "%s" do not correspond to the number of packages.')
-                })
-
     def get_rec_name(self, name):
         return self.product.rec_name
 
@@ -37,7 +24,6 @@ class BOMOutput(PackagedMixin,metaclass=PoolMeta):
 
 class Production(PackagedMixin,metaclass=PoolMeta):
     __name__ = 'production'
-
 
     package_required = fields.Function(fields.Boolean('Package required'),
         'on_change_with_package_required')
@@ -59,24 +45,13 @@ class Production(PackagedMixin,metaclass=PoolMeta):
             cls.number_of_packages.states['readonly'] = (
                 cls.quantity.states['readonly'])
 
-        cls._error_messages.update({
-                'package_required': 'Package required for Production "%s".',
-                'number_of_packages_required': (
-                    'Number of packages required for Production "%s".'),
-                'package_qty_required': ('Quantity by Package is required '
-                    'for package "%(package)s" of Production "%(record)s".'),
-                'invalid_quantity_number_of_packages': (
-                    'The quantity of Production "%s" do not correspond to the '
-                    'number of packages.')
-                })
-
     @fields.depends('product', 'quantity')
     def on_change_with_package_required(self, name=None):
         if self.product and self.product.package_required:
             return True
         return False
 
-    @fields.depends(methods=['quantity'])
+    @fields.depends(methods=['on_change_quantity'])
     def on_change_number_of_packages(self):
         super(Production, self).on_change_number_of_packages()
         self.on_change_quantity()
