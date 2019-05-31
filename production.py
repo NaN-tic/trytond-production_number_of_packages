@@ -82,8 +82,8 @@ class Production(PackagedMixin,metaclass=PoolMeta):
         if product == self.product or product.package_required:
             package = product.default_package
             move.package = package
-            move.number_of_packages = int(package.qty * quantity if package
-                else quantity)
+            move.number_of_packages = (int(quantity/package.qty) if package
+                else None)
         return move
 
     @classmethod
